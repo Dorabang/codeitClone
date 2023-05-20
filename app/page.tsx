@@ -1,9 +1,11 @@
+'use client';
 import Link from 'next/link';
+import SearchForm from './components/SearchForm';
 
 export default function Home() {
   return (
-    <div className='container'>
-      <h1 className='text-9xl'>Hello, Next.js</h1>
+    <div className='container mx-auto'>
+      <SearchForm />
       <ul>
         <li>
           <Link href='/products/1'>첫 번째 상품</Link>
