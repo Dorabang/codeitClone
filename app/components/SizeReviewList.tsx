@@ -37,8 +37,7 @@ const SizeReviewList = ({ sizeReviews }: { sizeReviews: sizeReviewsTypes }) => {
               <div>{formatData(new Date(sizeReview.createdAt))}</div>
             </div>
             <div>
-              ({labels.sex[sizeReview.sex]} {sizeReview.height}cm 기준{' '}
-              {sizeReview.size})
+              ({[sizeReview.sex]} {sizeReview.height}cm 기준 {sizeReview.size})
             </div>
             <div>{labels.fit[sizeReview.fit]}</div>
           </li>
