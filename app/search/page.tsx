@@ -1,5 +1,6 @@
 'use client';
 import { useSearchParams } from 'next/navigation';
+import SearchForm from '../components/SearchForm';
 
 const searchPage = () => {
   const searchParams = useSearchParams();
@@ -7,8 +8,9 @@ const searchPage = () => {
 
   return (
     <div>
-      <p>searchPage</p>
-      <p>{q} 검색 결과</p>
+      <p>search</p>
+      <SearchForm initialValue={`${q}`} />
+      {q && <p>{q} 검색 결과</p>}
     </div>
   );
 };
