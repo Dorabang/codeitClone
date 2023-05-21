@@ -24,20 +24,9 @@ interface ProductTypes {
   updatedAt: number;
 }
 
-interface sizeReviewsTypes {
-  id: number;
-  sex: string;
-  height: number;
-  size: 'S' | 'M' | 'L' | 'XL';
-  fit: 'small' | 'good' | 'big';
-  productId: number;
-  createdAt: number;
-  updatedAt: number;
-}
-
-const productDetailPage = ({ params: { id } }: propTypes) => {
+const ProductDetailPage = ({ params: { id } }: propTypes) => {
   const [product, setProduct] = useState<ProductTypes | null>(null);
-  const [sizeReviews, setSizeReviews] = useState<sizeReviewsTypes>([]);
+  const [sizeReviews, setSizeReviews] = useState<string[]>([]);
 
   async function getProduct(targetId: number) {
     const res = await axios.get(`/products/${targetId}`);
@@ -46,9 +35,9 @@ const productDetailPage = ({ params: { id } }: propTypes) => {
   }
 
   async function getSizeReviews(targetId: number) {
-    const res = await axios.get('/size_reviews');
-    const nextSizeReview = res.data;
-    setSizeReviews(nextSizeReview.results);
+    const res = await axios.get(`/size_reviews/?product_id=${targetId}`);
+    const nextSizeReview = res.data.results;
+    setSizeReviews(nextSizeReview);
     // console.log(nextSizeReview.results);
   }
 
@@ -63,20 +52,25 @@ const productDetailPage = ({ params: { id } }: propTypes) => {
 
   return (
     <>
-      <div className='container mx-auto flex justify-between'>
+      <div className='container mx-auto flex justify-between mt-20'>
         <div className='w-1/2'>
           <img src={product.imgUrl} alt={product.name} className='w-full' />
         </div>
         <ul className='pl-4 w-1/2'>
-          <li>{product.name}</li>
-          <li className='text-neutral-500'>{product.englishName}</li>
+          <li className='text-2xl font-bold text-neutral-900'>
+            {product.name}
+            <span className='text-sm text-neutral-500 pl-2'>
+              {product.englishName}
+            </span>
+          </li>
+
           <li>Brand : {product.brand}</li>
           <li>
-            <span className='text-neutral-500 line-through'>
-              {product.price.toLocaleString()}원
-            </span>
-            <span className='text-lg font-bold pl-1'>
+            <span className='text-lg font-bold'>
               {product.salePrice.toLocaleString()}원
+            </span>
+            <span className='text-neutral-500 line-through pl-2'>
+              {product.price.toLocaleString()}원
             </span>
           </li>
           <li>{product.likeCount}</li>
@@ -90,4 +84,4 @@ const productDetailPage = ({ params: { id } }: propTypes) => {
   );
 };
 
-export default productDetailPage;
+export default ProductDetailPage;

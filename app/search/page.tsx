@@ -2,7 +2,7 @@
 import { useSearchParams } from 'next/navigation';
 import SearchForm from '../components/SearchForm';
 
-const searchPage = () => {
+const SearchPage = () => {
   const searchParams = useSearchParams();
   const q = searchParams.get('q');
 
@@ -15,4 +15,4 @@ const searchPage = () => {
   );
 };
 
-export default searchPage;
+export default SearchPage;
