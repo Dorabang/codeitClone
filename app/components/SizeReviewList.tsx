@@ -12,11 +12,11 @@ interface labelsTypes {
 }
 
 const labels: labelsTypes = {
-  sex: { male: '남성', female: '여성' },
+  sex: { male: '남자', female: '여자' },
   fit: { small: '작음', good: '적당함', big: '큼' },
 };
 
-interface sizeReviewsTypes {
+interface sizeReviewTypes {
   id: number;
   sex: string;
   height: number;
@@ -27,17 +27,18 @@ interface sizeReviewsTypes {
   updatedAt: number;
 }
 
-const SizeReviewList = ({ sizeReviews }: { sizeReviews: sizeReviewsTypes }) => {
+const SizeReviewList = ({ sizeReviews }: { sizeReviews: any[] }) => {
   return (
     <ul>
       {sizeReviews &&
-        sizeReviews.map((sizeReview: sizeReviewsTypes) => (
-          <li key={sizeReview.id}>
+        sizeReviews.map((sizeReview: sizeReviewTypes) => (
+          <li key={sizeReview.id} className='pt-5'>
             <div>
               <div>{formatData(new Date(sizeReview.createdAt))}</div>
             </div>
             <div>
-              ({[sizeReview.sex]} {sizeReview.height}cm 기준 {sizeReview.size})
+              ({[sizeReview.sex]} {sizeReview.height}cm 기준
+              {sizeReview.size})
             </div>
             <div>{labels.fit[sizeReview.fit]}</div>
           </li>

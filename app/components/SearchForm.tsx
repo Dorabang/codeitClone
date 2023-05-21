@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 interface SearchFormProps {
-  initialValue: string;
+  initialValue?: string;
 }
 
 const SearchForm: React.FC<SearchFormProps> = ({ initialValue = '' }) => {
