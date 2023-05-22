@@ -2,6 +2,9 @@
 import { useEffect, useState } from 'react';
 import axios from '../../libs/axios';
 import SizeReviewList from '@/app/components/SizeReviewList';
+import { AiFillHeart, AiFillStar } from 'react-icons/ai';
+import styles from './Products.module.css';
+import StarRating from '@/app/components/StarRating';
 
 interface propTypes {
   params: { id: number };
@@ -56,29 +59,78 @@ const ProductDetailPage = ({ params: { id } }: propTypes) => {
         <div className='w-1/2'>
           <img src={product.imgUrl} alt={product.name} className='w-full' />
         </div>
-        <ul className='pl-4 w-1/2'>
-          <li className='text-2xl font-bold text-neutral-900'>
-            {product.name}
-            <span className='text-sm text-neutral-500 pl-2'>
-              {product.englishName}
-            </span>
-          </li>
-
-          <li>Brand : {product.brand}</li>
-          <li>
-            <span className='text-lg font-bold'>
-              {product.salePrice.toLocaleString()}원
-            </span>
-            <span className='text-neutral-500 line-through pl-2'>
-              {product.price.toLocaleString()}원
-            </span>
-          </li>
-          <li>{product.likeCount}</li>
-        </ul>
-      </div>
-      <div className='container mx-auto mt-12 border-t-1 border-neutral-500 border-solid'>
-        <h3 className='text-xl font-bold'>Size Review</h3>
-        <SizeReviewList sizeReviews={sizeReviews} />
+        <div className='pl-8 w-1/2'>
+          <ul>
+            <li className='text-2xl font-bold text-neutral-900 mb-8'>
+              {product.name}
+              <span className='text-sm text-neutral-500 pl-2'>
+                {product.englishName}
+              </span>
+            </li>
+          </ul>
+          <ul className='border border-solid border-neutral-900 rounded-lg py-5 px-7'>
+            <li>
+              <h3 className='text-xl font-bold pb-4'>제품 정보</h3>
+            </li>
+            <li className={styles.product_info}>
+              <div className={styles.product_info_name}>
+                <p>브랜드 / 품번</p>
+              </div>
+              <div className={styles.product_info_desc}>
+                <span>{product.brand}</span> /
+                <span> {product.productCode}</span>
+              </div>
+            </li>
+            <li className={styles.product_info}>
+              <div className={styles.product_info_name}>
+                <p>가격</p>
+              </div>
+              <div className={styles.product_info_desc}>
+                <span className='text-lg font-bold'>
+                  {product.salePrice.toLocaleString()}원
+                </span>
+                <span className='text-neutral-500 line-through pl-2'>
+                  {product.price.toLocaleString()}원
+                </span>
+              </div>
+            </li>
+            <li className={styles.product_info}>
+              <div className={styles.product_info_name}>
+                <p>포인트 적립</p>
+              </div>
+              <div className={styles.product_info_desc}>
+                <span>{product.point.toLocaleString()}P</span>
+              </div>
+            </li>
+            <li className={styles.product_info}>
+              <div className={styles.product_info_name}>
+                <p>구매 후기</p>
+              </div>
+              <div className={styles.product_info_desc}>
+                <span>
+                  <span className='text-amber-400 pr-1'>
+                    <StarRating value={product.starRating} />
+                  </span>
+                  {product.starRatingCount.toLocaleString()}개
+                </span>
+              </div>
+            </li>
+            <li className={styles.product_info}>
+              <div className={styles.product_info_name}>
+                <p>좋아요</p>
+              </div>
+              <div className={styles.product_info_desc}>
+                <span className='text-rose-500'>
+                  <AiFillHeart className='inline-block' size={18} />{' '}
+                  {product.likeCount}
+                </span>
+              </div>
+            </li>
+          </ul>
+          <div className='mt-8 border border-solid border-neutral-900 rounded-lg py-5 px-7'>
+            <SizeReviewList sizeReviews={sizeReviews} />
+          </div>
+        </div>
       </div>
     </>
   );
