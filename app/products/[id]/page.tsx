@@ -68,11 +68,11 @@ const ProductDetailPage = ({ params: { id } }: propTypes) => {
               </span>
             </li>
           </ul>
-          <ul className='border border-solid border-neutral-900 rounded-lg py-5 px-7'>
+          <ul className='border border-solid border-neutral-900 rounded-lg py-5 px-7 bg-white'>
             <li>
               <h3 className='text-xl font-bold pb-4'>제품 정보</h3>
             </li>
-            <li className={styles.product_info}>
+            <li className={`${styles.product_info} py-1`}>
               <div className={styles.product_info_name}>
                 <p>브랜드 / 품번</p>
               </div>
@@ -81,7 +81,7 @@ const ProductDetailPage = ({ params: { id } }: propTypes) => {
                 <span> {product.productCode}</span>
               </div>
             </li>
-            <li className={styles.product_info}>
+            <li className={`${styles.product_info} py-1`}>
               <div className={styles.product_info_name}>
                 <p>가격</p>
               </div>
@@ -94,15 +94,15 @@ const ProductDetailPage = ({ params: { id } }: propTypes) => {
                 </span>
               </div>
             </li>
-            <li className={styles.product_info}>
+            <li className={`${styles.product_info} py-1`}>
               <div className={styles.product_info_name}>
                 <p>포인트 적립</p>
               </div>
               <div className={styles.product_info_desc}>
-                <span>{product.point.toLocaleString()}P</span>
+                <span>{product.point.toLocaleString()} P</span>
               </div>
             </li>
-            <li className={styles.product_info}>
+            <li className={`${styles.product_info} py-1`}>
               <div className={styles.product_info_name}>
                 <p>구매 후기</p>
               </div>
@@ -115,19 +115,19 @@ const ProductDetailPage = ({ params: { id } }: propTypes) => {
                 </span>
               </div>
             </li>
-            <li className={styles.product_info}>
+            <li className={`${styles.product_info} py-1`}>
               <div className={styles.product_info_name}>
                 <p>좋아요</p>
               </div>
               <div className={styles.product_info_desc}>
                 <span className='text-rose-500'>
-                  <AiFillHeart className='inline-block' size={18} />{' '}
+                  <AiFillHeart className='inline-block' size={16} />{' '}
                   {product.likeCount}
                 </span>
               </div>
             </li>
           </ul>
-          <div className='mt-8 border border-solid border-neutral-900 rounded-lg py-5 px-7'>
+          <div className='mt-8 border border-solid border-neutral-900 rounded-lg py-5 px-7 bg-white'>
             <SizeReviewList sizeReviews={sizeReviews} />
           </div>
         </div>
