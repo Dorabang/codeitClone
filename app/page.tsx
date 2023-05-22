@@ -5,9 +5,11 @@ import ProductList from './components/ProductList';
 import axios from './libs/axios';
 
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai';
+import LoadingPage from './loading';
 
 export default function Home() {
   const [isActive, setIsActive] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const [products, setProducts] = useState<any[]>([]);
 
@@ -19,7 +21,12 @@ export default function Home() {
 
   useEffect(() => {
     getProducts();
+    setLoading(false);
   }, []);
+
+  if (loading) {
+    return <LoadingPage />;
+  }
 
   return (
     <div className='container mx-auto flex justify-between relative'>
@@ -29,7 +36,7 @@ export default function Home() {
             <SearchForm />
             <AiOutlineClose
               size={24}
-              className='ml-2 text-neutral-900 cursor-pointer'
+              className='ml-2 text-neutral-900 cursor-pointer dark:text-neutral-50'
               onClick={() => setIsActive(false)}
             />
           </div>
@@ -37,7 +44,7 @@ export default function Home() {
           <AiOutlineSearch
             onClick={() => setIsActive(true)}
             size={24}
-            className='cursor-pointer'
+            className='cursor-pointer dark:text-neutral-50'
           />
         )}
       </div>

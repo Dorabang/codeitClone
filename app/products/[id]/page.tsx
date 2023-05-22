@@ -5,6 +5,7 @@ import SizeReviewList from '@/app/components/SizeReviewList';
 import { AiFillHeart, AiFillStar } from 'react-icons/ai';
 import styles from './Products.module.css';
 import StarRating from '@/app/components/StarRating';
+import LoadingPage from '@/app/loading';
 
 interface propTypes {
   params: { id: number };
@@ -28,6 +29,8 @@ interface ProductTypes {
 }
 
 const ProductDetailPage = ({ params: { id } }: propTypes) => {
+  const [loading, setLoading] = useState<boolean>(true);
+
   const [product, setProduct] = useState<ProductTypes | null>(null);
   const [sizeReviews, setSizeReviews] = useState<string[]>([]);
 
@@ -49,9 +52,14 @@ const ProductDetailPage = ({ params: { id } }: propTypes) => {
 
     getProduct(id);
     getSizeReviews(id);
+    setLoading(false);
   }, [id]);
 
   if (!product) return null;
+
+  if (loading) {
+    return <LoadingPage />;
+  }
 
   return (
     <>
@@ -61,14 +69,14 @@ const ProductDetailPage = ({ params: { id } }: propTypes) => {
         </div>
         <div className='pl-8 w-1/2'>
           <ul>
-            <li className='text-2xl font-bold text-neutral-900 mb-8'>
+            <li className='text-2xl font-bold text-neutral-900 mb-8 dark:text-neutral-50'>
               {product.name}
               <span className='text-sm text-neutral-500 pl-2'>
                 {product.englishName}
               </span>
             </li>
           </ul>
-          <ul className='border border-solid border-neutral-900 rounded-lg py-5 px-7 bg-white'>
+          <ul className='border border-solid border-neutral-900 rounded-lg py-5 px-7 bg-white dark:bg-white/50 dark:border-neutral-300'>
             <li>
               <h3 className='text-xl font-bold pb-4'>제품 정보</h3>
             </li>
@@ -89,7 +97,7 @@ const ProductDetailPage = ({ params: { id } }: propTypes) => {
                 <span className='text-lg font-bold'>
                   {product.salePrice.toLocaleString()}원
                 </span>
-                <span className='text-neutral-500 line-through pl-2'>
+                <span className='text-neutral-500 line-through pl-2 dark:text-neutral-700'>
                   {product.price.toLocaleString()}원
                 </span>
               </div>
@@ -127,7 +135,7 @@ const ProductDetailPage = ({ params: { id } }: propTypes) => {
               </div>
             </li>
           </ul>
-          <div className='mt-8 border border-solid border-neutral-900 rounded-lg py-5 px-7 bg-white'>
+          <div className='mt-8 border border-solid border-neutral-900 rounded-lg py-5 px-7 bg-white dark:bg-white/50 dark:border-neutral-300'>
             <SizeReviewList sizeReviews={sizeReviews} />
           </div>
         </div>
