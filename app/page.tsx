@@ -1,32 +1,49 @@
 'use client';
-import { useState } from 'react';
-import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import SearchForm from './components/SearchForm';
-import { AiOutlineSearch } from 'react-icons/ai';
+import ProductList from './components/ProductList';
+import axios from './libs/axios';
+
+import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai';
 
 export default function Home() {
   const [isActive, setIsActive] = useState<boolean>(false);
+
+  const [products, setProducts] = useState<any[]>([]);
+
+  async function getProducts() {
+    const res = await axios.get('/products');
+    const nextProducts = res.data.results;
+    setProducts(nextProducts);
+  }
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   return (
     <div className='container mx-auto flex justify-between relative'>
       <div className='absolute right-0'>
         {isActive ? (
-          <SearchForm />
+          <div className='flex items-center'>
+            <SearchForm />
+            <AiOutlineClose
+              size={24}
+              className='ml-2 text-neutral-900 cursor-pointer'
+              onClick={() => setIsActive(false)}
+            />
+          </div>
         ) : (
-          <AiOutlineSearch onClick={() => setIsActive(true)} size={24} />
+          <AiOutlineSearch
+            onClick={() => setIsActive(true)}
+            size={24}
+            className='cursor-pointer'
+          />
         )}
       </div>
-      <ul className='pt-5'>
-        <li>
-          <Link href='/products/1'>첫 번째 상품</Link>
-        </li>
-        <li>
-          <Link href='/products/2'>두 번째 상품</Link>
-        </li>
-        <li>
-          <Link href='/products/3'>세 번째 상품</Link>
-        </li>
-      </ul>
+      <div className='mt-14'>
+        <ProductList products={products} />
+      </div>
     </div>
   );
 }
