@@ -47,7 +47,9 @@ const SizeReviewList = ({ sizeReviews }: { sizeReviews: any[] }) => {
             </li>
           ))
         ) : (
-          <li className='text-neutral-500'>아직 등록된 리뷰가 없습니다.</li>
+          <li className='text-neutral-500 dark:text-neutral-700'>
+            아직 등록된 리뷰가 없습니다.
+          </li>
         )}
       </ul>
     </>

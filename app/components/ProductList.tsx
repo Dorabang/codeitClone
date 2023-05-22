@@ -26,7 +26,7 @@ const ProductList = ({ products = [] }: { products: any[] }) => {
           className='sm:w-1/2 md:px-3 md:w-1/3 w-full px-2 pb-8 text-center'
         >
           <Link href={`/products/${product.id}`}>
-            <div className='border border-solid border-neutral-900 rounded-lg overflow-hidden bg-white'>
+            <div className='border border-solid border-neutral-900 rounded-lg overflow-hidden bg-white dark:border-neutral-400'>
               <img src={product.imgUrl} alt={product.name} />
               <div className='py-4'>
                 <p className='font-bold text-neutral-900'>{product.name}</p>
