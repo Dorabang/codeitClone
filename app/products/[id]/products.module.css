@@ -1,0 +1,18 @@
+.product_info {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 0;
+}
+
+.product_info_name {
+  width: 20%;
+}
+
+.product_info_name > p {
+  color: #171717;
+  font-weight: 700;
+}
+
+.product_info_desc {
+  width: 80%;
+}
