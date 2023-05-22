@@ -23,13 +23,16 @@ const ProductList = ({ products = [] }: { products: any[] }) => {
       {products.map((product: ProductTypes) => (
         <li
           key={product.id}
-          className='sm:w-1/2 sm:px-2 md:px-5 md:w-1/3 w-full pb-10'
+          className='sm:w-1/2 md:px-3 md:w-1/3 w-full px-2 pb-8 text-center'
         >
           <Link href={`/products/${product.id}`}>
-            <img src={product.imgUrl} alt={product.name} />
-            <span>{product.name}</span>
-            <br />
-            <span>{product.price.toLocaleString()}원</span>
+            <div className='border border-solid border-neutral-900 rounded-lg overflow-hidden bg-white'>
+              <img src={product.imgUrl} alt={product.name} />
+              <div className='py-4'>
+                <p className='font-bold text-neutral-900'>{product.name}</p>
+                <span>{product.price.toLocaleString()}원</span>
+              </div>
+            </div>
           </Link>
         </li>
       ))}
