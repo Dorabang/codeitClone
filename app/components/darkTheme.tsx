@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { AiFillBulb, AiOutlineBulb } from 'react-icons/ai';
+import { CiLight } from 'react-icons/ci';
 
 export default function DarkTheme() {
   type themeType = 'Light Mode' | 'Dark Mode';
@@ -31,9 +31,9 @@ export default function DarkTheme() {
   return (
     <button
       onClick={toggleDarkMode}
-      className='fixed right-4 bottom-6 sm:right-12 sm:bottom-14 z-10 p-4 bg-neutral-900 border border-solid border-neutral-50 text-white dark:bg-white dark:border-neutral-900 dark:text-black rounded-lg'
+      className='p-4 bg-neutral-900 border border-solid border-neutral-50 text-white dark:bg-white dark:border-neutral-900 dark:text-black rounded-lg transition duration-150'
     >
-      {dark ? <AiFillBulb /> : <AiOutlineBulb />}
+      {dark ? <CiLight size={20} /> : <CiLight size={20} />}
     </button>
   );
 }

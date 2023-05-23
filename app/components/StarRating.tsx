@@ -7,9 +7,9 @@ const StarRating = ({ value = 1 }) => {
       <span className='text-amber-400 pr-1'>
         {star.map((rating) =>
           value >= rating ? (
-            <AiFillStar size={18} className='inline' />
+            <AiFillStar size={18} className='inline' key={rating} />
           ) : (
-            <AiOutlineStar size={18} className='inline' />
+            <AiOutlineStar size={18} className='inline' key={rating} />
           )
         )}
       </span>

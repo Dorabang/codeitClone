@@ -7,6 +7,7 @@ const formatData = (data: Date) => {
 };
 
 interface labelsTypes {
+  [key: string]: { [key: string]: string };
   sex: { male: string; female: string };
   fit: { small: string; good: string; big: string };
 }
@@ -38,8 +39,8 @@ const SizeReviewList = ({ sizeReviews }: { sizeReviews: any[] }) => {
           sizeReviews.map((sizeReview: sizeReviewTypes) => (
             <li key={sizeReview.id} className='py-2 flex justify-between'>
               <div>
-                ({labels.sex[sizeReview.sex]} {sizeReview.height}cm 기준{' '}
-                {sizeReview.size}) {labels.fit[sizeReview.fit]}
+                ({labels.default.sex[sizeReview.sex]} {sizeReview.height}cm 기준{' '}
+                {sizeReview.size}) {labels?.fit[sizeReview?.fit]}
               </div>
               <div>
                 <div>{formatData(new Date(sizeReview.createdAt))}</div>

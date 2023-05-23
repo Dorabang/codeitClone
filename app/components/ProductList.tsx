@@ -36,7 +36,7 @@ const ProductList = ({ products = [] }: { products: any[] }) => {
             href={`/products/${product.id}`}
             className='w-full h-full inline-block'
           >
-            <div className='border border-solid border-neutral-900 rounded-lg overflow-hidden bg-white dark:border-neutral-300 dark:bg-white/90 relative w-full'>
+            <div className='border border-solid border-neutral-900 rounded-lg overflow-hidden bg-white dark:border-neutral-300 dark:bg-white/50 relative w-full'>
               <div className='relative'>
                 <Image
                   src={product.imgUrl}
@@ -49,7 +49,7 @@ const ProductList = ({ products = [] }: { products: any[] }) => {
                 <p className='font-bold text-neutral-900'>{product.name}</p>
                 <span>
                   {product.price.toLocaleString()}원
-                  <span className='text-sm text-neutral-500 line-through pl-2'>
+                  <span className='text-sm text-neutral-500 line-through pl-2 dark:text-neutral-700'>
                     {product.salePrice.toLocaleString()}원
                   </span>
                 </span>
