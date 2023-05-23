@@ -19,7 +19,6 @@ const nextConfig = {
       },
     ],
   },
-  extends: ['next', 'prettier'],
 };
 
 module.exports = nextConfig;
