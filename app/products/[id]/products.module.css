@@ -1,3 +1,31 @@
+.product_img {
+  height: 380px;
+}
+
+@media (min-width: 640px) {
+  .product_img {
+    height: 700px;
+  }
+}
+
+@media (min-width: 768px) {
+  .product_img {
+    height: 500px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .product_img {
+    height: 700px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .product_img {
+    height: 800px;
+  }
+}
+
 .product_info {
   display: flex;
   justify-content: space-between;

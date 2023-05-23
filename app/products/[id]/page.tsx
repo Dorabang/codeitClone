@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import axios from '../../libs/axios';
 import SizeReviewList from '@/app/components/SizeReviewList';
-import { AiFillHeart, AiFillStar } from 'react-icons/ai';
+import { AiFillHeart } from 'react-icons/ai';
 import styles from './Products.module.css';
 import StarRating from '@/app/components/StarRating';
 import LoadingPage from '@/app/loading';
@@ -64,8 +64,10 @@ const ProductDetailPage = ({ params: { id } }: propTypes) => {
 
   return (
     <>
-      <div className='container mx-auto flex justify-between mt-20'>
-        <div className='w-1/2 relative'>
+      <div className='container mx-auto flex flex-wrap justify-between mt-20 lg:px-4 px-0'>
+        <div
+          className={`lg:w-1/2 w-full sm:mx-0 mx-3 rounded-lg overflow-hidden relative ${styles.product_img}`}
+        >
           <Image
             src={product.imgUrl}
             alt={product.name}
@@ -73,11 +75,11 @@ const ProductDetailPage = ({ params: { id } }: propTypes) => {
             fill
           />
         </div>
-        <div className='pl-8 w-1/2'>
+        <div className='lg:pl-8 sm:px-0 px-4 lg:w-1/2 w-full lg:mt-0 mt-5'>
           <ul>
-            <li className='text-2xl font-bold text-neutral-900 mb-8 dark:text-neutral-50'>
+            <li className='md:text-2xl text-xl font-bold text-neutral-900 mb-8 dark:text-neutral-50'>
               {product.name}
-              <span className='text-sm text-neutral-500 pl-2'>
+              <span className='text-sm text-neutral-500 sm:pl-2 sm:inline-block block '>
                 {product.englishName}
               </span>
             </li>

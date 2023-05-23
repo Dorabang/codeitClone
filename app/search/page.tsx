@@ -5,6 +5,7 @@ import ProductList from '../components/ProductList';
 import { useEffect, useState } from 'react';
 import axios from '../libs/axios';
 import LoadingPage from '../loading';
+import Head from 'next/head';
 
 const SearchPage = () => {
   const searchParams = useSearchParams();
@@ -30,8 +31,11 @@ const SearchPage = () => {
   }
 
   return (
-    <div className='container mx-auto flex justify-center'>
-      <div>
+    <>
+      <Head>
+        <title>"{q}"검색 결과 - Undefined</title>
+      </Head>
+      <div className='container mx-auto flex justify-center'>
         <div className='text-center w-full'>
           <SearchForm initialValue={`${q}`} />
           {q && (
@@ -40,9 +44,9 @@ const SearchPage = () => {
             </p>
           )}
         </div>
-        <ProductList products={products} />
       </div>
-    </div>
+      <ProductList products={products} />
+    </>
   );
 };
 

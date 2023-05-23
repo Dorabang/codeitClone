@@ -35,7 +35,8 @@ const SearchForm: React.FC<SearchFormProps> = ({ initialValue = '' }) => {
           name='q'
           value={value}
           onChange={handleChange}
-          size={35}
+          size={15}
+          placeholder='검색어를 입력해주세요.'
           className='text-black px-4 py-1 p rounded-full outline-1 outline-neutral-900 border-solid border-neutral-500 border-2 dark:outline-neutral-50 dark:border-neutral-700 dark:hover:outline-neutral-50 dark:bg-neutral-900 dark:text-white'
         />
         <button
