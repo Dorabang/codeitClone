@@ -1,0 +1,41 @@
+.wrap > li {
+  height: 595px;
+}
+
+.wrap > li > a {
+  height: 100%;
+  display: block;
+}
+
+.wrap > li > a > div {
+  height: 100%;
+}
+
+.wrap > li > a > div > div:nth-child(1) {
+  width: 100%;
+  height: 400px;
+}
+
+.wrap > li > a > div > div:nth-child(1) > img {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .wrap > li {
+    height: 560px;
+  }
+
+  .wrap > li > a > div > div:nth-child(1) {
+    height: 365px;
+  }
+}
+
+@media (min-width: 768px) {
+  .wrap > li {
+    height: 680px;
+  }
+
+  .wrap > li > a > div > div:nth-child(1) {
+    height: 485px;
+  }
+}

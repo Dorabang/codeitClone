@@ -31,7 +31,7 @@ export default function DarkTheme() {
   return (
     <button
       onClick={toggleDarkMode}
-      className='fixed right-12 bottom-14 p-4 bg-neutral-900 border border-solid border-neutral-50 text-white dark:bg-white dark:border-neutral-50 dark:text-black rounded-lg'
+      className='fixed right-12 bottom-14 z-10 p-4 bg-neutral-900 border border-solid border-neutral-50 text-white dark:bg-white dark:border-neutral-900 dark:text-black rounded-lg'
     >
       {dark ? <AiFillBulb /> : <AiOutlineBulb />}
     </button>

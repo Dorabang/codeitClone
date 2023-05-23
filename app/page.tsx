@@ -29,8 +29,8 @@ export default function Home() {
   }
 
   return (
-    <div className='container mx-auto flex justify-between relative'>
-      <div className='absolute right-0'>
+    <div className='container mx-auto flex justify-between relative px-4 sm:px-0'>
+      <div className='absolute right-4 sm:right-0'>
         {isActive ? (
           <div className='flex items-center'>
             <SearchForm />

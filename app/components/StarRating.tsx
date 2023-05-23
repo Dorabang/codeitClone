@@ -4,7 +4,7 @@ const StarRating = ({ value = 1 }) => {
   const star = [1, 2, 3, 4, 5];
   return (
     <>
-      <span>
+      <span className='text-amber-400 pr-1'>
         {star.map((rating) =>
           value >= rating ? (
             <AiFillStar size={18} className='inline' />

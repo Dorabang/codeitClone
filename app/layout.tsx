@@ -25,7 +25,7 @@ export default function RootLayout({
         className={`${notoSansKR.className} dark:bg-neutral-900 transition duration-500`}
       >
         <header className='py-8 border-b border-solid border-neutral-700 mb-10'>
-          <div className='container mx-auto flex justify-between'>
+          <div className='container mx-auto flex justify-between px-4 sm:px-0'>
             <h1 className='text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white'>
               <Link href='/'>Undefined</Link>
             </h1>
