@@ -6,6 +6,7 @@ import { AiFillHeart, AiFillStar } from 'react-icons/ai';
 import styles from './Products.module.css';
 import StarRating from '@/app/components/StarRating';
 import LoadingPage from '@/app/loading';
+import Image from 'next/image';
 
 interface propTypes {
   params: { id: number };
@@ -64,8 +65,13 @@ const ProductDetailPage = ({ params: { id } }: propTypes) => {
   return (
     <>
       <div className='container mx-auto flex justify-between mt-20'>
-        <div className='w-1/2'>
-          <img src={product.imgUrl} alt={product.name} className='w-full' />
+        <div className='w-1/2 relative'>
+          <Image
+            src={product.imgUrl}
+            alt={product.name}
+            className='w-full'
+            fill
+          />
         </div>
         <div className='pl-8 w-1/2'>
           <ul>
@@ -116,9 +122,7 @@ const ProductDetailPage = ({ params: { id } }: propTypes) => {
               </div>
               <div className={styles.product_info_desc}>
                 <span>
-                  <span className='text-amber-400 pr-1'>
-                    <StarRating value={product.starRating} />
-                  </span>
+                  <StarRating value={product.starRating} />
                   {product.starRatingCount.toLocaleString()}개
                 </span>
               </div>
