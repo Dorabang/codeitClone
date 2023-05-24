@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { CiLight } from 'react-icons/ci';
+import { BsMoonStars, BsSun } from 'react-icons/bs';
 
 export default function DarkTheme() {
   type themeType = 'Light Mode' | 'Dark Mode';
@@ -33,7 +33,7 @@ export default function DarkTheme() {
       onClick={toggleDarkMode}
       className='p-4 bg-neutral-900 border border-solid border-neutral-50 text-white dark:bg-white dark:border-neutral-900 dark:text-black rounded-lg transition duration-150'
     >
-      {dark ? <CiLight size={20} /> : <CiLight size={20} />}
+      {dark === 'Dark Mode' ? <BsMoonStars size={20} /> : <BsSun size={20} />}
     </button>
   );
 }
