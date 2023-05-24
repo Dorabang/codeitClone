@@ -37,7 +37,7 @@ const SearchPage = () => {
           <SearchForm initialValue={`${q}`} />
           {q && (
             <p className='my-10 pb-5 text-xl w-full border-b-2 border-solid border-neutral-900 dark:text-white dark:border-neutral-700'>
-              &quot{q}&quot 검색 결과
+              &quot;{q}&quot; 검색 결과
             </p>
           )}
         </div>
