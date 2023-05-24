@@ -7,33 +7,13 @@ import styles from './products.module.css';
 import StarRating from '@/app/components/StarRating';
 import LoadingPage from '@/app/loading';
 import Image from 'next/image';
-
-interface propTypes {
-  params: { id: number };
-}
-
-interface ProductTypes {
-  id: number;
-  name: string;
-  englishName: string;
-  brand: string;
-  productCode: string;
-  price: number;
-  salePrice: number;
-  starRating: number;
-  starRatingCount: number;
-  likeCount: number;
-  point: number;
-  imgUrl: string;
-  createdAt: number;
-  updatedAt: number;
-}
+import { ProductTypes, propTypes, sizeReviewTypes } from '@/app/types/types';
 
 const ProductDetailPage = ({ params: { id } }: propTypes) => {
   const [loading, setLoading] = useState<boolean>(true);
 
   const [product, setProduct] = useState<ProductTypes | null>(null);
-  const [sizeReviews, setSizeReviews] = useState<string[]>([]);
+  const [sizeReviews, setSizeReviews] = useState<sizeReviewTypes[]>([]);
 
   async function getProduct(targetId: number) {
     const res = await axios.get(`/products/${targetId}`);

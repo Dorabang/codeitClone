@@ -1,3 +1,5 @@
+import { labelsTypes, sizeReviewTypes } from '../types/types';
+
 const formatData = (data: Date) => {
   const MM = String(data.getUTCMonth() + 1).padStart(2, '0');
   const DD = String(data.getUTCDate()).padStart(2, '0');
@@ -6,29 +8,16 @@ const formatData = (data: Date) => {
   return `${YYYY}. ${MM}. ${DD}`;
 };
 
-interface labelsTypes {
-  [key: string]: { [key: string]: string };
-  sex: { male: string; female: string };
-  fit: { small: string; good: string; big: string };
-}
-
 const labels: labelsTypes = {
   sex: { male: '남자', female: '여자' },
   fit: { small: '작음', good: '적당함', big: '큼' },
 };
 
-interface sizeReviewTypes {
-  id: number;
-  sex: string;
-  height: number;
-  size: 'S' | 'M' | 'L' | 'XL';
-  fit: 'small' | 'good' | 'big';
-  productId: number;
-  createdAt: number;
-  updatedAt: number;
-}
-
-const SizeReviewList = ({ sizeReviews }: { sizeReviews: any[] }) => {
+const SizeReviewList = ({
+  sizeReviews,
+}: {
+  sizeReviews: sizeReviewTypes[];
+}) => {
   return (
     <>
       <ul>
@@ -39,8 +28,8 @@ const SizeReviewList = ({ sizeReviews }: { sizeReviews: any[] }) => {
           sizeReviews.map((sizeReview: sizeReviewTypes) => (
             <li key={sizeReview.id} className='py-2 flex justify-between'>
               <div>
-                ({labels.default.sex[sizeReview.sex]} {sizeReview.height}cm 기준{' '}
-                {sizeReview.size}) {labels?.fit[sizeReview?.fit]}
+                ({labels.sex[sizeReview.sex]} {sizeReview.height}cm 기준{' '}
+                {sizeReview.size}) {labels.fit[sizeReview.fit]}
               </div>
               <div>
                 <div>{formatData(new Date(sizeReview.createdAt))}</div>
