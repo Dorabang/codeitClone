@@ -1,9 +1,9 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from '../../libs/axios';
 import SizeReviewList from '@/app/components/SizeReviewList';
 import { AiFillHeart } from 'react-icons/ai';
-import styles from './Products.module.css';
+import styles from './products.module.css';
 import StarRating from '@/app/components/StarRating';
 import LoadingPage from '@/app/loading';
 import Image from 'next/image';
@@ -135,7 +135,9 @@ const ProductDetailPage = ({ params: { id } }: propTypes) => {
               </div>
               <div className={styles.product_info_desc}>
                 <span className='text-rose-500'>
-                  <AiFillHeart className='inline-block' size={16} />{' '}
+                  <span className='inline-block'>
+                    <AiFillHeart size={16} />
+                  </span>{' '}
                   {product.likeCount}
                 </span>
               </div>
